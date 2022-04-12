@@ -1,0 +1,23 @@
+<section class="feature_part padding_top">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="section_tittle text-center">
+          <h2>Products</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row align-items-center justify-content-between" *ngIf="products != null;">
+      <div class="col-lg-4 col-sm-6" *ngFor="let p of products;">
+        <div class="single_product_item">
+          <img src="{{ api.baseurl + p.imagepath }}" style="height: 300px;">
+          <div class="single_product_text">
+            <h4>{{ p.name }}</h4>
+            <h3>{{ p.price | currency:"INR" }}</h3>
+            <a routerLink="/products/{{ p._id }}" class="add_cart">Buy Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
