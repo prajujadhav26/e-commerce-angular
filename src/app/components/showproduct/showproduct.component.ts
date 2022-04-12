@@ -23,12 +23,13 @@ export class ShowproductComponent implements OnInit {
   id: string | null = "0";
   baseurl = this.api.baseurl;
   date: Date = new Date();
+  orderid:string ="";
 
   constructor(private api: ApiServiceService, private route: ActivatedRoute) { }
 
   options = {
     "key": "rzp_live_swPK7rd1Iy42Cf",
-    "amount": "2",
+    "amount": "1",
     "name": "Abhijit Gatade",
     "description": "Web Development",
     "image": "https://www.javachinna.com/wp-content/uploads/2020/02/android-chrome-512x512-1.png",
@@ -72,9 +73,6 @@ export class ShowproductComponent implements OnInit {
         this.initialize();
       });
     }
-
-
-
   }
   initialize() {
     this.data.total = this.data.quantity * this.data.price + this.data.shipping;
@@ -105,10 +103,10 @@ export class ShowproductComponent implements OnInit {
     console.log(order);
     let data = { data: order };
     this.api.post("order/place", data).subscribe((data: any) => {
+      this.orderid = data._id;
       // alert("Order Placed....");
-      // // window.location.href = "products";
+      window.location.href = "products";
       // console.log(data);
-
 
       this.paymentId = '';
       this.error = '';
@@ -153,6 +151,10 @@ export class ShowproductComponent implements OnInit {
 
   @HostListener('window:payment.success', ['$event'])
   onPaymentSuccess(event: any): void {
+    let data = { id: this.orderid}
+    this.api.post("order/paymentsuccess", { data: data}).subscribe((data: any) =>{
+      this.data = data.data;
+    })
     // this.orderService.updateOrder(event.detail).subscribe(
     // data => {
     //     this.paymentId = data.message;
@@ -164,7 +166,4 @@ export class ShowproductComponent implements OnInit {
     //);
     this.message = "Success";
   }
-
-
-
 }
