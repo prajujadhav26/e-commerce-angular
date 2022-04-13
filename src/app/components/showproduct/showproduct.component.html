@@ -26,13 +26,11 @@
           <p>
             {{ data.descriptions}}
           </p>
-          <div class="card_area d-flex justify-content-between align-items-center">
-            <!-- <div class="product_count">
-              <span class="inumber-decrement"> <i class="ti-minus"></i></span>
-              <input class="input-number" type="text" value="1" min="0" max="10">
-              <span class="number-increment"> <i class="ti-plus"></i></span>
-            </div> -->
+          <div class="card_area d-flex justify-content-between align-items-center"  *ngIf="data.status == 'Open'">
             <a  class="btn_3" (click)="show()" style="cursor: pointer;">Buy Now</a>
+          </div>
+          <div class="card_area d-flex justify-content-between align-items-center" *ngIf="data.status == 'Closed'">
+            <a  class="btn_3"  style="cursor: pointer;">Out of Stock</a>
           </div>
         </div>
       </div>

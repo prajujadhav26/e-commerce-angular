@@ -1,3 +1,4 @@
+import { SubscriptionComponent } from './admin/subscription/subscription.component';
 import { OrdersComponent } from './admin/orders/orders.component';
 import { ShowproductComponent } from './components/showproduct/showproduct.component';
 import { LoginComponent } from './admin/login/login.component';
@@ -23,7 +24,8 @@ const routes: Routes = [
   { path: "products", component: ProductsComponent },
   { path: "products/showproduct", component:ShowproductComponent},
   { path: "products/:id" , component:ShowproductComponent},
-  { path: "admin/orders", component:OrdersComponent}
+  { path: "admin/orders", component:OrdersComponent},
+  { path: "admin/subscription", component:SubscriptionComponent}
 ];
 
 @NgModule({

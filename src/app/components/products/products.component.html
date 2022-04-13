@@ -14,7 +14,12 @@
           <div class="single_product_text">
             <h4>{{ p.name }}</h4>
             <h3>{{ p.price | currency:"INR" }}</h3>
-            <a routerLink="/products/{{ p._id }}" class="add_cart">Buy Now</a>
+            <div *ngIf="p.instock == 'Yes'">
+              <a routerLink="/products/{{ p._id }}" class="add_cart">Buy Now</a>
+            </div>
+            <div *ngIf="p.instock == 'No'">
+              <a class="add_cart">Out of Stock</a>
+            </div>
           </div>
         </div>
       </div>
