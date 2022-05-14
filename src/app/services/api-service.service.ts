@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class ApiServiceService {
 
-  baseurl = "http://localhost:8081/"
+  baseurl = "https://e-comm-node.herokuapp.com/"
 
   constructor(private http:HttpClient) { }
 
